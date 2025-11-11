@@ -1710,7 +1710,7 @@ async fn handle_tool_call(
 pub async fn start_mcp_server(state: Arc<McpServerState>) -> Result<(), Box<dyn std::error::Error + Send + Sync>> {
     let router = create_mcp_router(state.clone());
     
-    let addr = format!("127.0.0.1:{}", state.port);
+    let addr = format!("0.0.0.0:{}", state.port);
     
     // Try to bind to the port, this will fail if port is already in use
     let listener = match tokio::net::TcpListener::bind(&addr).await {
